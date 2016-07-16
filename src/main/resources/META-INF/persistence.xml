@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+    <persistence-unit name="librarydb">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>com.vini.library.entity.Book</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+            <!--
+              if you don't have a database already created
+              append ;create=true to end of the jdbc url
+            -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby:librarydb; create=true"/>
+            <property name="javax.persistence.jdbc.user" value="admin"/>
+            <property name="javax.persistence.jdbc.password" value="admin"/>
+            <property name="hibernate.generate_statistics" value="false"/>
+            <property name="format_sql" value="false"/>
+            <property name="hibernate.show_sql" value="false"/>
+            <!--
+              if you just created the database, maybe
+              you want hibernate to create a schema for you
+
+              <property name="hibernate.hbm2ddl.auto" value="create"/>
+            -->
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+        </properties>
+    </persistence-unit>
+</persistence>
